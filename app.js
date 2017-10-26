@@ -3,6 +3,7 @@ var animalsArray = ["Cat"];
 function populateButtons() {
 	$("#buttons").empty();
 
+
 	for (var i = 0; i < animalsArray.length; i++) {
 		var a = $("<button>");
 		a.attr("id", "animal-button");
@@ -10,12 +11,13 @@ function populateButtons() {
 		a.attr("data", animalsArray[i]);
 		a.text(animalsArray[i]);
 		$("#buttons").append(a);
+		
 	}
 
 
 
 }
-
+// Click handler for Submit button
 $("#addAnimal").on("click", function(event) {
 	event.preventDefault();
         // This line of code will grab the input from the textbox
@@ -30,10 +32,11 @@ $("#addAnimal").on("click", function(event) {
 
 populateButtons();
 
-$("#animal-button").on("click", function() {
+//click handler for buttons
+$(document).on("click", "#animal-button", function() {
 	var tag = $(this).attr("data");
 	var api_key = "GDJCSZq270XjzfIi3snv7ZQjQZDXWUi9";
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tag + "&api_key=" + api_key + "&limit=1";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tag + "&api_key=" + api_key + "&limit=10";
 
 
 	
@@ -52,9 +55,14 @@ $("#animal-button").on("click", function() {
 			var p = $("<p>").text("Rating: " + rating);
 
 			var image = $("<img>");
-			var imageUrl = results[0].images.fixed_height.url;
-			image.attr("src", imageUrl);
-			image.attr("alt", "cat image");
+			var animatedUrl = results[i].images.fixed_height.url;
+			var stillUrl = results[i].images.fixed_height_still.url;
+			image.attr("src", stillUrl);
+			image.attr("data-still", stillUrl)
+			image.attr("alt", "gif");
+			image.addClass("gifImage");
+			image.attr("data-animated", animatedUrl);
+			image.attr("data-state", "still");
 			gifDiv.prepend(p);
 			gifDiv.prepend(image);
 			$("#images").prepend(gifDiv);
@@ -64,4 +72,16 @@ $("#animal-button").on("click", function() {
 
 });
 
-$(document).on("click", ".gif", displayMovieInfo);
+
+////NOT DONE
+$(document).on("click", ".gifImage", function() {
+	var state = $(this).attr("data-state");
+
+	if (state === "still") {
+		$(this).attr("data-state", "animated");
+		$(this).attr("src", $(this).attr("data-animated"));
+	} else {
+		$(this).attr("data-state", "still");
+		$(this).attr("src", $(this).attr("data-still"))
+	}
+});
