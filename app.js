@@ -8,6 +8,7 @@ function populateButtons() {
 		var a = $("<button>");
 		a.attr("id", "animal-button");
 		a.addClass("gif");
+		a.addClass("btn btn-primary");
 		a.attr("data", animalsArray[i]);
 		a.text(animalsArray[i]);
 		$("#buttons").append(a);
@@ -20,13 +21,14 @@ function populateButtons() {
 // Click handler for Submit button
 $("#addAnimal").on("click", function(event) {
 	event.preventDefault();
+
         // This line of code will grab the input from the textbox
         var newAnimal = $("#animal-input").val().trim();
 
-        // The movie from the textbox is then added to our array
+        // The subject from the textbox is then added to our array
         animalsArray.push(newAnimal);
 
-        // Calling renderButtons which handles the processing of our movie array
+        // Calling renderButtons which handles the processing of our subject array
         populateButtons();
     });
 
@@ -73,7 +75,7 @@ $(document).on("click", "#animal-button", function() {
 });
 
 
-////NOT DONE
+//Click handler for pausing and unpausing gifs
 $(document).on("click", ".gifImage", function() {
 	var state = $(this).attr("data-state");
 

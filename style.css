@@ -1,0 +1,21 @@
+body {
+	background-color: gray;
+}
+
+#wrapper {
+	background-color: white;
+	margin: 20px;
+	border: 8px black;
+	border-radius: 5px;
+	padding: 20px;
+	width: 50%;
+	min-width: 500px;
+}
+
+.gif {
+	margin: 3px;
+}
+
+p {
+	margin-top: 5px;
+}

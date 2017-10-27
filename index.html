@@ -3,11 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<title>GIPHY Homework</title>
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- CSS stylesheet -->
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
+<div id="wrapper">
+	<h1> GIPHY is awesome!</h1>
+	<h4>-Click the buttons below to view gifs of that subject</h4>
+	<h4>-Use the form to add your own buttons</h4>
+	<h4>-Click on the gif to pause/unpause</h4>
 	<div id="buttons">
 
 	</div>
@@ -15,14 +21,15 @@
 
 	<form id="animal-form">
 		<label for="animal-form">Add an animal!</label>
-		<input type="text" id="animal-input"><br>
+		<input type="text" id="animal-input">
 
-		<input id="addAnimal" type="submit" value="Submit">
+		<input class="btn btn-success" id="addAnimal" type="submit" value="Submit">
 	</form>
+	<br>
 	
 	<div id="images">
 	</div>
-
+</div>
 	<!-- jQuery CDN -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- JavaScript Link -->
